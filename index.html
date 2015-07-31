@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/angular_material/0.9.0/angular-material.min.css">
+</head>
+<body ng-app="todos">
+<div ng-controller="TaskCtrl" style="height:100%;">
+    <div layout="column" class="relative" layout-align="center center" layout-fill role="main" style="height:100%;">
+        <md-whiteframe class="md-whiteframe-z5" layout layout-align="center center" style="width:40%;">
+            <div layout="column"  layout-fill>
+                <md-toolbar md-scroll-shrink>
+                    <div class="md-toolbar-tools">
+                        <h3>
+                            <span>Todos...</span>
+                        </h3>
+                    </div>
+                </md-toolbar>
+                <md-input-container>
+                    <label>Title</label>
+                    <input ng-model="taskDes">
+                    </md-input-container>
+                    <md-button class="md-raised md-primary" ng-click="add()">Add</md-button>
+                    <div layout="column" layout-align="center center" ng-repeat="item in todos track by $index" style="padding:15px;">
+                        <div layout="row" layout-align="center center">
+                            <div layout="column" flex="70">
+                                <h3>{{ item.des }}</h3>
+                                <p>{{ item.date }}</p>
+                            </div>
+                            <div flex="10">
+                                <ng-md-icon icon="delete" ng-click="removeItem($index)"></ng-md-icon>
+                            </div>
+                            <div flex="10">
+                                <ng-md-icon icon="edit" ng-click="editItem($index,$event)"></ng-md-icon>
+                            </div>
+                            <div flex="10">
+                                <ng-md-icon icon="thumb_up"></ng-md-icon>
+                            </div>
+                        </div>
+                        <md-divider  style="width:100%;"></md-divider>
+                    </div>
+                </div>
+            </md-whiteframe>
+        </div>
+    </div>
+</body>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/ngStorage/ngStorage.min.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="bower_components/angular-material/angular-material.min.js"></script>
+    <script src="bower_components/angular-material-icons/angular-material-icons.min.js"></script>
+    <script src="js/controllers/task.js"></script>
+</html>
